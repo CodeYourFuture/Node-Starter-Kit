@@ -1,6 +1,11 @@
 const express= require("express");
 const app = express();
 
+const trainees = [
+  { name: "Leila", region: "north-west" },
+  { name: "Sahar", region: "north-west" },
+  { name: "Bahar", region: "north-west" },
+];
 app.get("/",(req,res)=>{
     res.send("Yay Node!")
     console.log(req);
@@ -23,6 +28,10 @@ app.get("/multiply",(req,res)=>{
     let value1 =req.query.value1;
     let value2 =req.query.value2;
     res.send(`your request value is ${value1 * value2}`)
+})
+app.get("/trainees",(req,res)=>{
+    let nameQuery=req.query.name;
+    res.send(`name : ${nameQuery}`);
 })
 app.listen(3000, ()=>{
     console.log("Server is listening on port 3000.Ready to accept request!");
