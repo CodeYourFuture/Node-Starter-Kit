@@ -9,7 +9,7 @@ const trainees = [
   { name: "Sahar", region: "north-west" },
   { name: "Bahar", region: "north-west" },
 ];
-const albumsData = [
+let albumsData = [
   {
     albumId: "10",
     artistName: "Beyoncé",
@@ -77,9 +77,7 @@ app.get("/albums",(request,response)=>{
 })
 app.get("/albums/:albumId",(request,response)=>{
     const albumId=request.params.albumId;
-    console.log(albumId);
     const result=albumsData.find(album=>album.albumId===albumId)
-    console.log(result);
     // response.status(200).send({result})
     response.send(result)
 })
@@ -95,7 +93,19 @@ app.delete("/albums/:albumId",(request,response)=>{
   albumsData.splice(id,1);
   response.send({albumsData})
 })
+// app.put("/albums/:albumId",(request,response)=>{
+//   const newAlbum = {...request.params,...request.body}
+//   const albumIndex=albumsData.findIndex(album=>album.albumId===request.params.id)
+//   albumsData.splice(albumIndex,1,newAlbum);
+//   response.status(200).json({ success: true });
+// })
 
+app.put("/albums/:albumId",(request,response)=>{
+  let oldObject=Object.assign({},albumsData);
+  albumsData.map(album=>album.albumId===request.params.albumId)
+  albumsData=request.body;
+  response.json({oldVersion : oldObject , newVersion : albumsData})
+})
 app.listen(3000, ()=>{
     console.log("Server is listening on port 3000.Ready to accept request!");
     
