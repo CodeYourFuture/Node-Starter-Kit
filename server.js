@@ -93,12 +93,12 @@ app.delete("/albums/:albumId",(request,response)=>{
   albumsData.splice(id,1);
   response.send({albumsData})
 })
-// app.put("/albums/:albumId",(request,response)=>{
-//   const newAlbum = {...request.params,...request.body}
-//   const albumIndex=albumsData.findIndex(album=>album.albumId===request.params.id)
-//   albumsData.splice(albumIndex,1,newAlbum);
-//   response.status(200).json({ success: true });
-// })
+app.put("/albums/:albumId",(request,response)=>{
+  const newAlbum = {...request.params,...request.body}
+  const albumIndex=albumsData.findIndex(album=>album.albumId===request.params.id)
+  albumsData.splice(albumIndex,1,newAlbum);
+  response.status(200).json({ success: true });
+})
 
 app.put("/albums/:albumId",(request,response)=>{
   let oldObject=Object.assign({},albumsData);
