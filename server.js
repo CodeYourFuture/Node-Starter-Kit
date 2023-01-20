@@ -36,12 +36,12 @@ const movies = [
   },
 ];
 // http://locaalhost:9090
-app.get("/", function (request, response) {
-  console.log(request);
-  // console.log("Hello World, you've reached my API");
-  // response.send("hello World you're getting response from my server!");
-  response.status(200).send("Welcome to my move API!");
-});
+// app.get("/", function (request, response) {
+//   console.log(request);
+//   // console.log("Hello World, you've reached my API");
+//   // response.send("hello World you're getting response from my server!");
+//   response.status(200).send("Welcome to my move API!");
+// });
 // http://localhost:9090/trainees
 // http://localhost:9090/trainees?region=north-west
 app.get("/movies", function (request, response) {
@@ -51,17 +51,28 @@ app.get("/movies", function (request, response) {
   response.status(200).send({ movies });
 });
 
-app.get("/movies/:id", function (request, response) {
-  const idToFind = Number(request.params.id);
-  const movie = movies.find((movie) => movie.id === idToFind);
-  response.status(200).send({ movie });
+app.put("/movies/:id", function (request, response) {
+  //replace the movie with id 2 with the req.body
+
+  const newMovie = { ...request.body, ...request.params };
+  const movieIndex = movies.findIndex(
+    (movie) => movie.id === Number(request.params.id)
+  );
+
+  movies.splice(movieIndex, 1, newMovie);
+  console.log(movies, "<----movies?");
+  response.status(200).send({ success: true });
+
+  // const idToFind = Number(request.params.id);
+  // const movie = movies.find((movie) => movie.id === idToFind);
+  // response.status(200).send({ movie });
 });
-app.post("/movies", function (request, response) {
-  console.log(request.body, "<---- this is a data client sent over!");
-  const newMovie = request.body;
-  movies.push(newMovie);
-  response.status(201).send({ newMovie });
-});
+// app.post("/movies", function (request, response) {
+//   console.log(request.body, "<---- this is a data client sent over!");
+//   const newMovie = request.body;
+//   movies.push(newMovie);
+//   response.status(201).send({ newMovie });
+// });
 app.listen(port, function () {
-  console.log(" my application now listening on port 9090...");
+  console.log(" server is listening on port 9090...");
 });
