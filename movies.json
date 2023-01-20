@@ -1,0 +1,22 @@
+[
+    {
+      "id": 1,
+      "title": "Girlhood",
+      "yearsOfRelease": 1995,
+      "director": "Celione Sciamma"
+    },
+    {
+      "id": 2,
+      "title": "Jurassic Park",
+      "certificate": "PG",
+      "yearsOfRelease": 1993,
+      "director": "Cel Scia"
+    },
+    {
+      "id": 3,
+      "title": "Juli iamma",
+      "certificate": "PGl",
+      "yearsOfRelease": 1991,
+      "director": "Cel Jurassic"
+    }
+  ]
