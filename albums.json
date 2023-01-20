@@ -1,0 +1,32 @@
+[
+  {
+    "album": "We Need A Little Christmas",
+    "artist": "Pentatonix",
+    "id": 0
+  },
+  {
+    "album": "Legend",
+    "artist": "Bob Marley",
+    "id": 1
+  },
+  {
+    "album": "Traveller",
+    "artist": "Chris Stapleton",
+    "id": 2
+  },
+  {
+    "album": "Happier Than Ever",
+    "artist": "Billie Eilish",
+    "id": 3
+  },
+  {
+    "album": "Dolly Parton's Greatest Hits",
+    "artist": "The Beatles",
+    "id": 4
+  },
+  {
+    "album": "Thriller",
+    "artist": "Michael Jackson",
+    "id": 5
+  }
+]
