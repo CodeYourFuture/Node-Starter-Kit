@@ -17,12 +17,19 @@ app.listen(port, function () {
 8. now we can run in our terminal the command `node server.js` and we are going to receive the information wrote in the console.log()`"my application is now listening on port 9090"`
 9. To stop the program you should run `crtl + c`.
 
+# POTSMAN 
+
+we are going to use the method GET and set the port 
+1. http://localhost:9090 
+2. press the button `Send`.
+3. you will see the response below in the `response` area.
 
 
 
-//http://localhost:9090 
+
+
+
+
+
 
 Get http://localhost:9090/trainees  
-we set a const with some data on server.js
-
-**
