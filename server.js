@@ -27,13 +27,15 @@ app.get("/trainees", function (request, response){
     response.send({ trainees });
 })
 
-/*If we change the get on postman the url =  " http://localhost:9090/trainees?region=London"  we are asking, if you data trainees has 
+/*
+
+If we change the get on postman the url =  " http://localhost:9090/trainees?region=London"  we are asking, if you data trainees has 
 "region", give "london", and with the console.log in the line 25 we are
 sending back to our terminal which paramentre is requiring in the postman. this is the result that we expect after we 
 sent the url:   
 
 after run this:
------npm start------
+----npm start-----
 
 > node-starter-kit@1.0.0 start
 > node server.js
@@ -55,10 +57,9 @@ receiving a request to the /trainees endPoint
 
 app.listen(port, function () {
     console.log("my application is now listening on port 9090");
-
 });
 
 
 
-// console.log(app.get);
+// console.log(app.get); this was using like test
 
