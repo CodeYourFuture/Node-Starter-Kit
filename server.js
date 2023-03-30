@@ -85,7 +85,7 @@ app.delete("/albums/:albumID", function (req, res) {
    deleteanAlbum = req.params.albumID ;
    console.log (`the client want to delet Album number ${deleteanAlbum}`)
     const album = albumsData.find((album) => album.albumId === deleteanAlbum);
-     todos.splice(album, 1);
+     albumsData.splice(album, 1);
   
 });
 

@@ -10,6 +10,9 @@
       "name": "Launch Program",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/server.js"
+      // "restart": true,
+      // "runtimeExecutable": "nodemon",
+      // "console": "integratedTerminal"
     }
   ]
 }
