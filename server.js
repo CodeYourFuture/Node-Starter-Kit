@@ -73,6 +73,22 @@ app.post("/albums", function (req, res) {
   albumsData.push(newAlbum);
   res.send({newAlbum})
 });
+app.post("/myAlbums", function (req, res) {
+    console.log("POST /albums route");
+    console.log(req.body)
+    const newAl = req.body;
+    albumsData.push(newAl)
+});
+
+// notice .delete
+app.delete("/albums/:albumID", function (req, res) {
+   deleteanAlbum = req.params.albumID ;
+   console.log (`the client want to delet Album number ${deleteanAlbum}`)
+    const album = albumsData.find((album) => album.albumId === deleteanAlbum);
+     todos.splice(album, 1);
+  
+});
+
 
 app.listen(3000, () =>
   console.log("Server is listening on port 3000. Ready to accept requests!")
