@@ -41,6 +41,18 @@ app.get("/", (req, res) => {
   res.send("Hello World! You searched for " + searchQuery);
   console.log(req.query);
 });
+app.get("/", (req, res) => {
+  let searchQuery = req.query.search;
+  res.send("Hello World! You searched for " + searchQuery);
+  console.log(req.query);
+});
+app.get("/json", function (req, res) {
+  let value1 = req.query.value1;
+  let value2 = req.query.value2;
+  console.log("value1 and value2",req.query)
+  res.send(`multiply two values=  ${value1*value2}`);
+});
+
 /********************************************** */
 app.get("/node", (req, res) => {
   res.send("Yay Node! how areeeeee you?????");
