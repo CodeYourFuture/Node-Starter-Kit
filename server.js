@@ -16,17 +16,19 @@ app.get("/", (req, res) => {
   console.log("Hello world, you've reached my API");
   res.send("Hello world, you are gettinga response from my server");
 });
+
 app.get("/trainees", (req, res) => {
   console.log("Received a request to the /trainees endpoint");
   let output = [];
   if (req.query.region) {
-    if (req.query.region === "north-west") {
+    let region = req.query.region.toLocaleLowerCase();
+    if (region === "north-west") {
       output = trainees.filter((trainee) => trainee.region === "north-west");
       return res.send({
         data: output,
         message: "ok",
       });
-    } else if (req.query.region === "london") {
+    } else if (region === "london") {
       output = trainees.filter((trainee) => trainee.region === "london");
       return res.send({
         data: output,
