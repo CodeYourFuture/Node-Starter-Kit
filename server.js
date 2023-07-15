@@ -1,6 +1,8 @@
 const express = require("express");
-const app = express();
-const port = 9090;
+const afshasServer = express();
+//express "express js" server is easier to code
+
+const port = 9852;
 
 const trainees = [
   { name: "malkit", region: "scotland" },
@@ -8,16 +10,15 @@ const trainees = [
   { name: "afsha", region: "london" },
 ];
 
-app.listen(port, function () {
-  console.log("listening on 9090");
+afshasServer.listen(port, function () {
+  console.log("listening on 9852");
 });
 
-app.get("/", function (req, res) {
-  console.log("hello world");
-  res.send("this is your response");
+afshasServer.get("/", function (req, res) {
+  res.send("LOOK AT THIS AFSHA!!!!!!");
 });
 
-app.get("/chocs", function (req, res) {
+afshasServer.get("/chocs", function (req, res) {
   console.log(req.query.region);
   let filteredList = trainees.filter(
     (trainee) => trainee.region === req.query.region
@@ -25,7 +26,15 @@ app.get("/chocs", function (req, res) {
   res.send({ filteredList });
 });
 
-app.get("/multiply", function (req, res) {
+afshasServer.get("/sweets", function (req, res) {
+  console.log(req.query.region);
+  let filteredList = trainees.filter(
+    (trainee) => trainee.region === req.query.region
+  );
+  res.send({ filteredList });
+});
+
+afshasServer.get("/multiply", function (req, res) {
   let firstNum = req.query.firstNum;
   let secondNum = req.query.secondNum;
   let result = firstNum * secondNum;
