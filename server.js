@@ -1,42 +1,43 @@
 const express = require("express");
-const afshasServer = express();
+const app = express();
 //express "express js" server is easier to code
 
-const port = 9852;
+const port = 9090;
 
-const trainees = [
-  { name: "malkit", region: "scotland" },
-  { name: "siver", region: "scotland" },
-  { name: "afsha", region: "london" },
+app.listen(port, function () {
+  console.log("Server is listening");
+});
+
+const albumsData = [
+  {
+    albumId: "10",
+    artistName: "Beyoncé",
+    collectionName: "Lemonade",
+    artworkUrl100: "http://is1.mzstatic.com/image/thumb/Music20/v4/23/c1/9e/23c19e53-783f-ae47-7212-03cc9998bd84/source/100x100bb.jpg",
+    releaseDate: "2016-04-25T07:00:00Z",
+    primaryGenreName: "Pop",
+    url: "https://www.youtube.com/embed/PeonBmeFR8o?rel=0&amp;controls=0&amp;showinfo=0",
+  },
+  {
+    albumId: "11",
+    artistName: "Beyoncé",
+    collectionName: "Dangerously In Love",
+    artworkUrl100: "http://is1.mzstatic.com/image/thumb/Music/v4/18/93/6d/18936d85-8f6b-7597-87ef-62c4c5211298/source/100x100bb.jpg",
+    releaseDate: "2003-06-24T07:00:00Z",
+    primaryGenreName: "Pop",
+    url: "https://www.youtube.com/embed/ViwtNLUqkMY?rel=0&amp;controls=0&amp;showinfo=0",
+  },
+  {
+    albumId: "12",
+    artistName: "Beyoncé",
+    collectionName: "Renaissance",
+    artworkUrl100: "http://is1.mzstatic.com/image/thumb/Music/v4/18/93/6d/18936d85-8f6b-7597-87ef-62c4c5211298/source/100x100bb.jpg",
+    releaseDate: "2013-06-24T07:00:00Z",
+    primaryGenreName: "Pop",
+    url: "https://www.youtube.com/embed/ViwtNLUqkMY?rel=0&amp;controls=0&amp;showinfo=0",
+  },
 ];
 
-afshasServer.listen(port, function () {
-  console.log("listening on 9852");
-});
-
-afshasServer.get("/", function (req, res) {
-  res.send("LOOK AT THIS AFSHA!!!!!!");
-});
-
-afshasServer.get("/chocs", function (req, res) {
-  console.log(req.query.region);
-  let filteredList = trainees.filter(
-    (trainee) => trainee.region === req.query.region
-  );
-  res.send({ filteredList });
-});
-
-afshasServer.get("/sweets", function (req, res) {
-  console.log(req.query.region);
-  let filteredList = trainees.filter(
-    (trainee) => trainee.region === req.query.region
-  );
-  res.send({ filteredList });
-});
-
-afshasServer.get("/multiply", function (req, res) {
-  let firstNum = req.query.firstNum;
-  let secondNum = req.query.secondNum;
-  let result = firstNum * secondNum;
-  res.send({ result });
+app.get("/albums", function (req, res) {
+  res.send(albumsData);
 });
