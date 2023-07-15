@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 //express "express js" server is easier to code
+app.use(express.json());
 
 const port = 9090;
 
@@ -42,7 +43,6 @@ app.get("/albums", function (req, res) {
   res.send(albumsData);
 });
 
-
 app.get("/albums/:albumId", function (request, response) {
   let idToFind = request.params.albumId;
   function findAlbum(album) {
@@ -50,4 +50,11 @@ app.get("/albums/:albumId", function (request, response) {
   }
   let foundRecord = albumsData.find(findAlbum);
   response.json(foundRecord);
+});
+
+app.post("/albums", function (req, res) {
+  console.log("POST /albums route");
+  console.log(req.body);
+  albumsData.push(req.body);
+  res.send("done!");
 });
