@@ -41,3 +41,13 @@ const albumsData = [
 app.get("/albums", function (req, res) {
   res.send(albumsData);
 });
+
+
+app.get("/albums/:albumId", function (request, response) {
+  let idToFind = request.params.albumId;
+  function findAlbum(album) {
+    return Number(album.albumId) === Number(idToFind);
+  }
+  let foundRecord = albumsData.find(findAlbum);
+  response.json(foundRecord);
+});
