@@ -58,3 +58,14 @@ app.post("/albums", function (req, res) {
   albumsData.push(req.body);
   res.send("done!");
 });
+
+app.delete("/albums/:albumId", function (req, res) {
+  console.log("DELETE /albums route");
+  console.log(req.params.albumId);
+  let inAlbumId = req.params.albumId;
+  inAlbumId = Number(inAlbumId);
+  let removeIndex = albumsData.map((album) => album.id).indexOf(inAlbumId);
+  console.log("index ", removeIndex);
+  removeIndex >= 0 && albumsData.splice(removeIndex, 1);
+  res.send("deleted");
+});
