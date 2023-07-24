@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+app.use(express.json());
 
 const albumsData = [
   {
@@ -63,6 +64,14 @@ app.get("/multiply", function (req, res) {
 app.get("/albums", function (req, res) {
   res.send({ albumsData });
 });
+
+app.get("/albums/:albumId", (req,res) => {
+  const albumIdToFind = req.params.albumId;
+  console.log(req.params.albumId);
+  const albumMatchingID = albumsData.find((album) => album.albumId === albumIdToFind);
+  console.log(albumMatchingID);
+  res.send({ albumMatchingID })
+})
 
 app.listen(35981, function () {
     console.log("Server is listening on port 35981. Ready to accept requests!");
