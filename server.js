@@ -79,6 +79,14 @@ app.post("/albums", (req, res) => {
   res.status(201).send({success: true});
 });
 
+app.delete("/albums/:albumID", (req, res) => {
+  const albumIDVariable = Number(req.params.albumID)
+  const albumWithMatchingId = albumsData.find((album) => album.albumId === albumIDVariable);
+  const albumIndexToBeDeleted = albumsData.indexOf(albumWithMatchingId);
+  albumsData.splice(albumIndexToBeDeleted, 1);
+  res.status(200).send({ success: true });
+});
+
 app.listen(35981, function () {
     console.log("Server is listening on port 35981. Ready to accept requests!");
 });
