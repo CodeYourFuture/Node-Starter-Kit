@@ -73,6 +73,12 @@ app.get("/albums/:albumId", (req,res) => {
   res.send({ albumMatchingID })
 })
 
+app.post("/albums", (req, res) => {
+  const newAlbum = req.body;
+  albumsData.push(newAlbum);
+  res.status(201).send({success: true});
+});
+
 app.listen(35981, function () {
     console.log("Server is listening on port 35981. Ready to accept requests!");
 });
